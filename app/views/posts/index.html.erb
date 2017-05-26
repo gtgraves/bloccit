@@ -1,5 +1,8 @@
 <h1>All Posts</h1>
 <% @posts.each do |post| %>
+  <% if post.id % 5 == 1 %>
+    <% post.title = "SPAM" %>
+  <% end %>
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
