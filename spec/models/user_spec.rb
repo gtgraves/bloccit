@@ -34,6 +34,18 @@ RSpec.describe User, type: :model do
     it "should be an invalid user due to blank email" do
       expect(user_with_invalid_email).to_not be_valid
     end
-    
+  end
+
+  describe "formatting name" do
+    let(:bad_name) { User.new(name: "steve jobs", email: "steve@bloccit.com") }
+    let(:good_name) { User.new(name: "Steve Jobs", email: "steve@bloccit.com") }
+
+    it "should properly format a bad name" do
+      expect(bad_name.name).to eq("Steve Jobs")
+    end
+
+    it "should not alter the formatting of a properly formatted name" do
+      expect(good_name.name).to eq("Steve Jobs")
+    end
   end
 end
