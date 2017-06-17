@@ -18,8 +18,21 @@
 
 .user-info {
   margin-top: 9px;
+  margin-bottom: 3px;
+  display: inline;
 }
 
 .nav {
   margin-top: 5px;
+}
+
+.user-name {
+  float: left;
+  margin-top: 4px;
+  margin-right: 9px;
+  text-align: right;
+}
+
+.user-image {
+  float: right;
 }
