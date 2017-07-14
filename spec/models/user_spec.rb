@@ -110,4 +110,14 @@ RSpec.describe User, type: :model do
       expect(known_user.avatar_url(48)).to eq(expected_gravatar)
     end
   end
+
+  describe "user_favorites" do
+    let(:test_user) { create(:user) }
+    let(:favorite_post) { create(:post) }
+
+    it "returns a favorited post when called" do
+      Favorite.create!(post: favorite_post, user: test_user)
+      expect(test_user.user_favorites).to include(favorite_post)
+    end
+  end
 end

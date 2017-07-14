@@ -19,8 +19,25 @@
   </div>
 </div>
 
-<h2>Posts</h2>
-<%= render @user.posts %>
+<% if user_has_no?(@user.posts) %>
+  <p> <%= @user.name %> has not submitted any posts yet. </p>
+<% else %>
+  <h2>Posts</h2>
+  <%= render @user.posts %>
+<% end %>
 
-<h2>Comments</h2>
-<%= render @user.comments %>
+<% if user_has_no?(@user.comments) %>
+  <p> <%= @user.name %> has not submitted any comments yet. </p>
+<% else %>
+  <h2>Comments</h2>
+  <%= render @user.comments %>
+<% end %>
+
+<% if user_has_no?(@user.favorites) %>
+  <p> <%= @user.name %> has not favorited any posts yet. </p>
+<% else %>
+  <h2>Favorites</h2>
+  <% @user.user_favorites.each do |favorite_post| %>
+    <%= render partial: 'users/favorite', locals: {post: favorite_post} %>
+  <% end %>
+<% end %>

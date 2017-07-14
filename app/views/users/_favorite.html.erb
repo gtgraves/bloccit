@@ -1,0 +1,13 @@
+<div class="media">
+  <h4 class="show-inline">
+    <%= link_to post.title, topic_post_path(post.topic, post) %>
+  </h4>
+  <div class="show-inline">
+    <% avatar_url = post.user.avatar_url(24) %>
+    <% if avatar_url %>
+      <%= image_tag avatar_url, class: 'show-inline' %>
+    <% end %>
+  </div>
+  <div class="show-inline">  <%= pluralize(post.points, 'point') %> </div>
+  <div class="show-inline">  <%= pluralize(post.comments.count, 'comment') %> </div>
+</div>
